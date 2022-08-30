@@ -1,12 +1,11 @@
 #include <gmock/gmock.h>
 
-#include <greeter.h>
+#include <v8engine.h>
 
+using namespace std;
 using namespace testing;
 
-TEST(GreeterTest, Greets)
+TEST(V8EngineTest, TestStart)
 {
-    constexpr auto GREET_TEXT = "Hello world!";
-    Greeter greeter{GREET_TEXT};
-    EXPECT_THAT(greeter.greet(), StrEq(GREET_TEXT));
+    V8Engine engine;
 }
