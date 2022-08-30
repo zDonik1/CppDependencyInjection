@@ -11,11 +11,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # ==== BUILDING TARGET ==== #
 
 set(HEADERS
-    greeter.h
+    v8engine.h
 )
 
 set(CLASS_SOURCES
-    greeter.cpp
+    v8engine.cpp
 )
 
 list(TRANSFORM HEADERS PREPEND ${CMAKE_CURRENT_LIST_DIR}/src/)

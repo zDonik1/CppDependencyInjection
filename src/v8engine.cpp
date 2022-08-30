@@ -5,17 +5,22 @@
  *
  *************************************************************************/
 
-#pragma once
+#include "v8engine.h"
 
-#include <string>
+using namespace std;
 
-class Greeter
+bool V8Engine::start()
 {
-public:
-    Greeter(std::string greetMessage);
+    isRunning_ = true;
+    return true;
+}
 
-    std::string_view greet();
+void V8Engine::stop()
+{
+    isRunning_ = false;
+}
 
-private:
-    std::string greetMessage_;
-};
+bool V8Engine::isRunning() const
+{
+    return isRunning_;
+}

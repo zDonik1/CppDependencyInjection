@@ -1,12 +1,33 @@
 #include <gmock/gmock.h>
 
-#include <greeter.h>
+#include <v8engine.h>
 
+using namespace std;
 using namespace testing;
 
-TEST(GreeterTest, Greets)
+class V8EngineTest : public Test
 {
-    constexpr auto GREET_TEXT = "Hello world!";
-    Greeter greeter{GREET_TEXT};
-    EXPECT_THAT(greeter.greet(), StrEq(GREET_TEXT));
+protected:
+    V8Engine engine;
+};
+
+TEST_F(V8EngineTest, TestStart)
+{
+    EXPECT_THAT(engine.start(), Eq(true));
+    EXPECT_THAT(engine.isRunning(), Eq(true));
+}
+
+TEST(ConstV8EngineTest, TestIsRunningWhenNotStarted)
+{
+    const V8Engine engine;
+    EXPECT_THAT(engine.isRunning(), Eq(false));
+}
+
+TEST_F(V8EngineTest, TestStop)
+{
+    engine.start();
+    ASSERT_THAT(engine.isRunning(), Eq(true));
+
+    engine.stop();
+    EXPECT_THAT(engine.isRunning(), Eq(false));
 }

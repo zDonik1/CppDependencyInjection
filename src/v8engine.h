@@ -5,13 +5,17 @@
  *
  *************************************************************************/
 
-#include "greeter.h"
+#pragma once
 
-using namespace std;
+#include <string>
 
-Greeter::Greeter(string greetMessage) : greetMessage_{move(greetMessage)} {}
-
-string_view Greeter::greet()
+class V8Engine
 {
-    return greetMessage_;
-}
+public:
+    bool start();
+    void stop();
+    bool isRunning() const;
+
+private:
+    bool isRunning_ = false;
+};
