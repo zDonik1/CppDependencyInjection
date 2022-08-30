@@ -15,6 +15,11 @@ bool V8Engine::start()
     return true;
 }
 
+void V8Engine::stop()
+{
+    isRunning_ = false;
+}
+
 bool V8Engine::isRunning() const
 {
     return isRunning_;
