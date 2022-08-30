@@ -8,4 +8,6 @@ using namespace testing;
 TEST(V8EngineTest, TestStart)
 {
     V8Engine engine;
+    EXPECT_THAT(engine.start(), Eq(true));
+    EXPECT_THAT(engine.isRunning(), Eq(true));
 }
