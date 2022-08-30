@@ -11,3 +11,9 @@ TEST(V8EngineTest, TestStart)
     EXPECT_THAT(engine.start(), Eq(true));
     EXPECT_THAT(engine.isRunning(), Eq(true));
 }
+
+TEST(V8EngineTest, TestIsRunningWhenNotStarted)
+{
+    V8Engine engine;
+    EXPECT_THAT(engine.isRunning(), Eq(false));
+}
