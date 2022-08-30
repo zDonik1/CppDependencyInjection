@@ -1,3 +1,3 @@
-# CppTddKataTemplate
+# CppModuleConceptDI
 
-Template for creating projects used to practice TDD katas on in C++. Includes conan-cmake for dependency management and testing is done with Google Test Framework.
+Project showcasing Dependency Injection (DI) using C++20 Modules and Concepts
