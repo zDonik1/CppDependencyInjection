@@ -25,6 +25,11 @@ find_package(GTest CONFIG REQUIRED)
 
 # ==== BUILDING TARGET ==== #
 
-add_executable(${PROJECT_NAME} test.cpp ${CLASS_SOURCES})
+set(SOURCES
+    test_v8engine.cpp
+    test_car.cpp
+)
+
+add_executable(${PROJECT_NAME} ${SOURCES} ${CLASS_SOURCES})
 target_link_libraries(${PROJECT_NAME} GTest::gtest_main)
 target_include_directories(${PROJECT_NAME} PUBLIC ../src)
