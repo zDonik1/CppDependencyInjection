@@ -10,9 +10,9 @@
 #include <concepts>
 
 template<typename EngineType>
-concept CEngine = requires(EngineType engine)
+concept CEngine = requires(EngineType engine, const EngineType constEngine)
 {
     { engine.start() } -> std::same_as<bool>;
     { engine.stop() } -> std::same_as<void>;
-    { engine.isRunning() } -> std::same_as<bool>;
+    { constEngine.isRunning() } -> std::same_as<bool>;
 };
