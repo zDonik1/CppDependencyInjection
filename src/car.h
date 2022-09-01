@@ -19,6 +19,7 @@ public:
     Car(EnginePtr engine) : engine_{engine} {}
 
     bool start() { return engine_->start(); }
+    void stop() { engine_->stop(); }
 
 private:
     EnginePtr engine_;

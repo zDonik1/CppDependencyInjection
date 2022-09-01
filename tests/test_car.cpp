@@ -14,12 +14,27 @@ public:
 };
 static_assert(Engine<MockEngine>);
 
-TEST(CarTest, TestStart)
+
+class CarTest : public Test
 {
-    auto engine{make_shared<MockEngine>()};
+public:
+    CarTest() : engine{make_shared<MockEngine>()}, car{engine} {}
+
+protected:
+    shared_ptr<MockEngine> engine;
+    Car<MockEngine> car;
+};
+
+TEST_F(CarTest, TestStart)
+{
     EXPECT_CALL(*engine, start())
         .WillOnce([] { return true; });
 
-    Car<MockEngine> car{engine};
     EXPECT_THAT(car.start(), IsTrue());
+}
+
+TEST_F(CarTest, TestStop)
+{
+    EXPECT_CALL(*engine, stop());
+    car.stop();
 }
