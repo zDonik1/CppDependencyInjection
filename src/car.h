@@ -9,7 +9,7 @@
 
 #include "engine.h"
 
-template<CEngine EngineType>
+template<Engine EngineType>
 class Car
 {
 private:
