@@ -1,5 +1,4 @@
 #include <gmock/gmock.h>
-//#include <gtest/gtest.h>
 
 #include <car.h>
 
@@ -13,6 +12,7 @@ public:
     MOCK_METHOD(void, stop, ());
     MOCK_METHOD(bool, isRunning, (), (const));
 };
+static_assert(Engine<MockEngine>);
 
 TEST(CarTest, TestStart)
 {

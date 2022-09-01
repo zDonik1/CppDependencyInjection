@@ -9,6 +9,8 @@
 
 #include <string>
 
+#include "engine.h"
+
 class V8Engine
 {
 public:
@@ -19,3 +21,4 @@ public:
 private:
     bool isRunning_ = false;
 };
+static_assert(Engine<V8Engine>);
