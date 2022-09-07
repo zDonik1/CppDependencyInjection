@@ -11,7 +11,7 @@ template<typename DerivedEngine>
 class Engine
 {
 public:
-    inline auto start() { derived().start(); }
+    inline auto start() { return derived().start(); }
 
 private:
     // private c-tor and derived friend prevents instantiation

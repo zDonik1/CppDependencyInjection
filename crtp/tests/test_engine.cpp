@@ -18,11 +18,20 @@ public:
     MOCK_METHOD(bool, start, ());
 };
 
-TEST(EngineTest, CallsStartOnDerived)
-{
-    auto concreteEngine = make_shared<MockEngine>();
-    EXPECT_CALL(*concreteEngine, start);
 
-    shared_ptr<Engine<MockEngine>> enginePtr = concreteEngine;
-    enginePtr->start();
+class EngineTest : public Test
+{
+public:
+    shared_ptr<MockEngine> concreteEngine{make_shared<MockEngine>()};
+    shared_ptr<Engine<MockEngine>> baseEnginePtr{concreteEngine};
+};
+
+
+TEST_F(EngineTest, StartReturnsSuccessOfStartMethodInDerived)
+{
+    constexpr auto SUCCESS{true};
+    EXPECT_CALL(*concreteEngine, start)
+        .WillOnce(Return(SUCCESS));
+
+    ASSERT_THAT(baseEnginePtr->start(), Eq(SUCCESS));
 }
