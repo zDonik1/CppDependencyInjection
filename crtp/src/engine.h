@@ -7,3 +7,18 @@
 
 #pragma once
 
+template<typename DerivedEngine>
+class Engine
+{
+public:
+    inline auto start() { derived().start(); }
+
+private:
+    // private c-tor and derived friend prevents instantiation
+    // and makes sure specialization of base class is of derived class
+    // which prevents bugs like this: class Derived : public Base<OtherDerived> {}
+    Engine() = default;
+    friend DerivedEngine;
+
+    inline auto &derived() { return static_cast<DerivedEngine &>(*this); }
+};
