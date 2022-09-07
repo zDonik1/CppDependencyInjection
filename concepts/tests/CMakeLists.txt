@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(CppModuleConceptDITests CXX)
+project(ConceptsDITests CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ==== DEPENDENCY MANAGEMENT ==== #
 
-include(../3rd/cmake-conan-0.18.1/conan.cmake)
+include(${CMAKE_SOURCE_DIR}/3rd/cmake-conan-0.18.1/conan.cmake)
 
 conan_cmake_configure(REQUIRES gtest/cci.20210126 GENERATORS cmake_find_package)
 
