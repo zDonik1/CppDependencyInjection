@@ -5,13 +5,13 @@
 using namespace std;
 using namespace testing;
 
-class V8EngineTest : public Test
+class TestV8Engine : public Test
 {
 protected:
     V8Engine engine;
 };
 
-TEST_F(V8EngineTest, TestStart)
+TEST_F(TestV8Engine, TestStart)
 {
     EXPECT_THAT(engine.start(), IsTrue());
     EXPECT_THAT(engine.isRunning(), IsTrue());
@@ -23,7 +23,7 @@ TEST(ConstV8EngineTest, TestIsRunningWhenNotStarted)
     EXPECT_THAT(engine.isRunning(), IsFalse());
 }
 
-TEST_F(V8EngineTest, TestStop)
+TEST_F(TestV8Engine, TestStop)
 {
     engine.start();
     ASSERT_THAT(engine.isRunning(), IsTrue());

@@ -15,17 +15,17 @@ public:
 static_assert(Engine<MockEngine>);
 
 
-class CarTest : public Test
+class TestCar : public Test
 {
 public:
-    CarTest() : engine{make_shared<MockEngine>()}, car{engine} {}
+    TestCar() : engine{make_shared<MockEngine>()}, car{engine} {}
 
 protected:
     shared_ptr<MockEngine> engine;
     Car<MockEngine> car;
 };
 
-TEST_F(CarTest, TestStart)
+TEST_F(TestCar, TestStart)
 {
     EXPECT_CALL(*engine, start())
         .WillOnce([] { return true; });
@@ -33,7 +33,7 @@ TEST_F(CarTest, TestStart)
     EXPECT_THAT(car.start(), IsTrue());
 }
 
-TEST_F(CarTest, TestStop)
+TEST_F(TestCar, TestStop)
 {
     EXPECT_CALL(*engine, stop());
     car.stop();
