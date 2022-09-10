@@ -17,6 +17,7 @@ class MockEngine : public Engine<MockEngine>
 public:
     MOCK_METHOD(bool, start, ());
     MOCK_METHOD(void, stop, ());
+    MOCK_METHOD(bool, isRunning, (), (const));
 };
 
 
@@ -25,6 +26,14 @@ class EngineTest : public Test
 public:
     shared_ptr<MockEngine> concreteEngine{make_shared<MockEngine>()};
     shared_ptr<Engine<MockEngine>> baseEnginePtr{concreteEngine};
+};
+
+
+class ConstEngineTest : public Test
+{
+public:
+    shared_ptr<const MockEngine> concreteEngine{make_shared<const MockEngine>()};
+    shared_ptr<const Engine<MockEngine>> baseEnginePtr{concreteEngine};
 };
 
 
@@ -42,4 +51,13 @@ TEST_F(EngineTest, StopCallsStopOnDerived)
     EXPECT_CALL(*concreteEngine, stop);
 
     baseEnginePtr->stop();
+}
+
+TEST_F(ConstEngineTest, IsRunningReturnsValueOfIsRunningOnDerived)
+{
+    constexpr auto IS_RUNNING{true};
+    EXPECT_CALL(*concreteEngine, isRunning)
+        .WillOnce(Return(IS_RUNNING));
+
+    ASSERT_THAT(baseEnginePtr->isRunning(), Eq(IS_RUNNING));
 }

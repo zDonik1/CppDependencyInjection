@@ -13,6 +13,7 @@ class Engine
 public:
     inline auto start() { return derived().start(); }
     inline auto stop() { derived().stop(); }
+    inline auto isRunning() const { return derived().isRunning(); }
 
 private:
     // private c-tor and derived friend prevents instantiation
@@ -22,4 +23,5 @@ private:
     friend DerivedEngine;
 
     inline auto &derived() { return static_cast<DerivedEngine &>(*this); }
+    inline auto &derived() const { return static_cast<const DerivedEngine &>(*this); }
 };
