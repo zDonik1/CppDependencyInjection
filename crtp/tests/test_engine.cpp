@@ -21,7 +21,7 @@ public:
 };
 
 
-class EngineTest : public Test
+class TestEngine : public Test
 {
 public:
     shared_ptr<MockEngine> concreteEngine{make_shared<MockEngine>()};
@@ -29,7 +29,7 @@ public:
 };
 
 
-class ConstEngineTest : public Test
+class TestConstEngine : public Test
 {
 public:
     shared_ptr<const MockEngine> concreteEngine{make_shared<const MockEngine>()};
@@ -37,7 +37,7 @@ public:
 };
 
 
-TEST_F(EngineTest, StartReturnsSuccessOfStartMethodInDerived)
+TEST_F(TestEngine, StartReturnsSuccessOfStartMethodInDerived)
 {
     constexpr auto SUCCESS{true};
     EXPECT_CALL(*concreteEngine, start)
@@ -46,14 +46,14 @@ TEST_F(EngineTest, StartReturnsSuccessOfStartMethodInDerived)
     ASSERT_THAT(baseEnginePtr->start(), Eq(SUCCESS));
 }
 
-TEST_F(EngineTest, StopCallsStopOnDerived)
+TEST_F(TestEngine, StopCallsStopOnDerived)
 {
     EXPECT_CALL(*concreteEngine, stop);
 
     baseEnginePtr->stop();
 }
 
-TEST_F(ConstEngineTest, IsRunningReturnsValueOfIsRunningOnDerived)
+TEST_F(TestConstEngine, IsRunningReturnsValueOfIsRunningOnDerived)
 {
     constexpr auto IS_RUNNING{true};
     EXPECT_CALL(*concreteEngine, isRunning)
