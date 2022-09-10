@@ -31,3 +31,8 @@ TEST_F(TestV8Engine, TestStop)
     engine.stop();
     EXPECT_THAT(engine.isRunning(), IsFalse());
 }
+
+TEST(TestV8EngineType, ConformsToEngineConcept)
+{
+    ASSERT_THAT(Engine<V8Engine>, IsTrue());
+}
