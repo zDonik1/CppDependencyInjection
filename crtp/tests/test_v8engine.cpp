@@ -42,3 +42,10 @@ TEST_F(TestV8Engine, StopSetsIsRunningToFalse)
 
     ASSERT_THAT(engine.isRunning(), IsFalse());
 }
+
+TEST(TestConstV8Engine, IsRunningCanBeCalledByConstObject)
+{
+    const V8Engine engine;
+
+    ASSERT_THAT(engine.isRunning(), IsFalse());
+}

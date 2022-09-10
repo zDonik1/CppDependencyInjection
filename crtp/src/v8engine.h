@@ -12,7 +12,7 @@ class V8Engine
 public:
     bool start();
     void stop();
-    bool isRunning();
+    bool isRunning() const;
 
 private:
     bool isRunning_{false};

@@ -18,7 +18,7 @@ void V8Engine::stop()
     isRunning_ = false;
 }
 
-bool V8Engine::isRunning()
+bool V8Engine::isRunning() const
 {
     return isRunning_;
 }
