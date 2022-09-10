@@ -32,3 +32,13 @@ TEST_F(TestV8Engine, StartSetsIsRunningToTrue)
 
     ASSERT_THAT(engine.isRunning(), IsTrue());
 }
+
+TEST_F(TestV8Engine, StopSetsIsRunningToFalse)
+{
+    engine.start();
+    ASSERT_THAT(engine.isRunning(), IsTrue());
+
+    engine.stop();
+
+    ASSERT_THAT(engine.isRunning(), IsFalse());
+}
