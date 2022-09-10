@@ -49,3 +49,8 @@ TEST(TestConstV8Engine, IsRunningCanBeCalledByConstObject)
 
     ASSERT_THAT(engine.isRunning(), IsFalse());
 }
+
+TEST(TestV8EngineType, InheritsFromSpecializedEngine)
+{
+    ASSERT_THAT((is_base_of_v<Engine<V8Engine>, V8Engine>), IsTrue());
+}

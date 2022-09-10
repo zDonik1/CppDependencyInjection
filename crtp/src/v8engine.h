@@ -7,7 +7,9 @@
 
 #pragma once
 
-class V8Engine
+#include "engine.h"
+
+class V8Engine : public Engine<V8Engine>
 {
 public:
     bool start();
