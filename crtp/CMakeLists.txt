@@ -12,10 +12,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(HEADERS
     engine.h
+    v8engine.h
 )
 
 set(CLASS_SOURCES
-    engine.cpp
+    v8engine.cpp
 )
 
 list(TRANSFORM HEADERS PREPEND ${CMAKE_CURRENT_LIST_DIR}/src/)

@@ -27,6 +27,7 @@ find_package(GTest CONFIG REQUIRED)
 
 set(SOURCES
     test_engine.cpp
+    test_v8engine.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${CLASS_SOURCES})

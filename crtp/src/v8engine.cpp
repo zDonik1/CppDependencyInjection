@@ -5,4 +5,9 @@
  *
  *************************************************************************/
 
-#include "engine.h"
+#include "v8engine.h"
+
+bool V8Engine::start()
+{
+    return true;
+}
