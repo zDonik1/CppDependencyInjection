@@ -19,6 +19,6 @@ public:
     bool isRunning() const;
 
 private:
-    bool isRunning_ = false;
+    bool isRunning_{false};
 };
 static_assert(Engine<V8Engine>);
