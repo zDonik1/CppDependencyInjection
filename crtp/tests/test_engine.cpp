@@ -16,6 +16,7 @@ class MockEngine : public Engine<MockEngine>
 {
 public:
     MOCK_METHOD(bool, start, ());
+    MOCK_METHOD(void, stop, ());
 };
 
 
@@ -34,4 +35,11 @@ TEST_F(EngineTest, StartReturnsSuccessOfStartMethodInDerived)
         .WillOnce(Return(SUCCESS));
 
     ASSERT_THAT(baseEnginePtr->start(), Eq(SUCCESS));
+}
+
+TEST_F(EngineTest, StopCallsStopOnDerived)
+{
+    EXPECT_CALL(*concreteEngine, stop);
+
+    baseEnginePtr->stop();
 }

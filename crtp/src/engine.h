@@ -12,6 +12,7 @@ class Engine
 {
 public:
     inline auto start() { return derived().start(); }
+    inline auto stop() { derived().stop(); }
 
 private:
     // private c-tor and derived friend prevents instantiation
