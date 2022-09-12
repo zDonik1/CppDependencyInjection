@@ -21,14 +21,25 @@ public:
 };
 
 
-TEST(TestCar, CanStartTheEngine)
+class TestCar : public Test
+{
+public:
+    shared_ptr<MockEngine> engine{make_shared<MockEngine>()};
+    Car<MockEngine> car{engine};
+};
+
+
+TEST_F(TestCar, CanStartTheEngine)
 {
     constexpr auto SUCCESS{true};
-    auto engine{make_shared<MockEngine>()};
     EXPECT_CALL(*engine, start).WillOnce(Return(SUCCESS));
 
-    shared_ptr<Engine<MockEngine>> baseEngine{engine};
-    Car car{baseEngine};
-
     ASSERT_THAT(car.start(), Eq(SUCCESS));
+}
+
+TEST_F(TestCar, CanStopTheEngine)
+{
+    EXPECT_CALL(*engine, stop);
+
+    car.stop();
 }
