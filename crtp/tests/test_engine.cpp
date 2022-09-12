@@ -61,3 +61,8 @@ TEST_F(TestConstEngine, IsRunningReturnsValueOfIsRunningOnDerived)
 
     ASSERT_THAT(baseEngine->isRunning(), Eq(IS_RUNNING));
 }
+
+TEST(TestEngineType, CantConstructEngine)
+{
+    ASSERT_THAT(is_constructible_v<Engine<MockEngine>>, IsFalse());
+}
