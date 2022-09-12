@@ -24,40 +24,40 @@ public:
 class TestEngine : public Test
 {
 public:
-    shared_ptr<MockEngine> concreteEngine{make_shared<MockEngine>()};
-    shared_ptr<Engine<MockEngine>> baseEnginePtr{concreteEngine};
+    shared_ptr<Engine<MockEngine>> baseEngine{makeEngine<MockEngine>()};
+    shared_ptr<MockEngine> engine{static_pointer_cast<MockEngine>(baseEngine)};
 };
 
 
 class TestConstEngine : public Test
 {
 public:
-    shared_ptr<const MockEngine> concreteEngine{make_shared<const MockEngine>()};
-    shared_ptr<const Engine<MockEngine>> baseEnginePtr{concreteEngine};
+    shared_ptr<const Engine<MockEngine>> baseEngine{makeEngine<const MockEngine>()};
+    shared_ptr<const MockEngine> engine{static_pointer_cast<const MockEngine>(baseEngine)};
 };
 
 
 TEST_F(TestEngine, StartReturnsSuccessOfStartMethodInDerived)
 {
     constexpr auto SUCCESS{true};
-    EXPECT_CALL(*concreteEngine, start)
+    EXPECT_CALL(*engine, start)
         .WillOnce(Return(SUCCESS));
 
-    ASSERT_THAT(baseEnginePtr->start(), Eq(SUCCESS));
+    ASSERT_THAT(baseEngine->start(), Eq(SUCCESS));
 }
 
 TEST_F(TestEngine, StopCallsStopOnDerived)
 {
-    EXPECT_CALL(*concreteEngine, stop);
+    EXPECT_CALL(*engine, stop);
 
-    baseEnginePtr->stop();
+    baseEngine->stop();
 }
 
 TEST_F(TestConstEngine, IsRunningReturnsValueOfIsRunningOnDerived)
 {
     constexpr auto IS_RUNNING{true};
-    EXPECT_CALL(*concreteEngine, isRunning)
+    EXPECT_CALL(*engine, isRunning)
         .WillOnce(Return(IS_RUNNING));
 
-    ASSERT_THAT(baseEnginePtr->isRunning(), Eq(IS_RUNNING));
+    ASSERT_THAT(baseEngine->isRunning(), Eq(IS_RUNNING));
 }

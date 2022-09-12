@@ -28,8 +28,13 @@ private:
     inline auto &derived() const { return static_cast<const DerivedEngine &>(*this); }
 };
 
+
+template<typename Type, bool Condition>
+using add_const_cond = std::conditional_t<Condition, std::add_const_t<Type>, Type>;
+
 template<typename ConcreteEngine>
-auto makeEngine() -> std::shared_ptr<Engine<ConcreteEngine>>
+auto makeEngine() -> std::shared_ptr<
+    add_const_cond<Engine<std::remove_cvref_t<ConcreteEngine>>, std::is_const_v<ConcreteEngine>>>
 {
-    return std::make_shared<ConcreteEngine>();
+    return std::make_shared<std::remove_cvref_t<ConcreteEngine>>();
 }
