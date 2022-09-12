@@ -25,6 +25,10 @@ find_package(GTest CONFIG REQUIRED)
 
 # ==== BUILDING TARGET ==== #
 
+set(HEADERS
+    mock_engine.h
+)
+
 set(SOURCES
     test_engine.cpp
     test_v8engine.cpp

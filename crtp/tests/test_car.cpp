@@ -9,16 +9,10 @@
 
 #include <car.h>
 
+#include "mock_engine.h"
+
 using namespace std;
 using namespace testing;
-
-class MockEngine : public Engine<MockEngine>
-{
-public:
-    MOCK_METHOD(bool, start, ());
-    MOCK_METHOD(void, stop, ());
-    MOCK_METHOD(bool, isRunning, (), (const));
-};
 
 
 class TestCar : public Test
