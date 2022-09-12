@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <memory>
+
 template<typename DerivedEngine>
 class Engine
 {
@@ -25,3 +27,9 @@ private:
     inline auto &derived() { return static_cast<DerivedEngine &>(*this); }
     inline auto &derived() const { return static_cast<const DerivedEngine &>(*this); }
 };
+
+template<typename ConcreteEngine>
+auto makeEngine() -> std::shared_ptr<Engine<ConcreteEngine>>
+{
+    return std::make_shared<ConcreteEngine>();
+}

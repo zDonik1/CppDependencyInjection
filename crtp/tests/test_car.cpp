@@ -24,8 +24,9 @@ public:
 class TestCar : public Test
 {
 public:
-    shared_ptr<MockEngine> engine{make_shared<MockEngine>()};
-    Car<MockEngine> car{engine};
+    shared_ptr<Engine<MockEngine>> baseEngine{makeEngine<MockEngine>()};
+    shared_ptr<MockEngine> engine{static_pointer_cast<MockEngine>(baseEngine)};
+    Car<MockEngine> car{baseEngine};
 };
 
 
