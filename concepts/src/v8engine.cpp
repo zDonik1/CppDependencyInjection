@@ -8,19 +8,3 @@
 #include "v8engine.h"
 
 using namespace std;
-
-bool V8Engine::start()
-{
-    isRunning_ = true;
-    return true;
-}
-
-void V8Engine::stop()
-{
-    isRunning_ = false;
-}
-
-bool V8Engine::isRunning() const
-{
-    return isRunning_;
-}
