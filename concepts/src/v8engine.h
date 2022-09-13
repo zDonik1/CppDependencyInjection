@@ -10,3 +10,9 @@
 #include <string>
 
 #include "engine.h"
+
+class V8Engine
+{
+public:
+    bool start() { return true; }
+};
