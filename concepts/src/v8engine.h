@@ -15,5 +15,10 @@ class V8Engine
 {
 public:
     bool start();
-    bool isRunning();
+    void stop();
+    bool isRunning() const;
+
+private:
+    bool isRunning_{false};
 };
+static_assert(Engine<V8Engine>);

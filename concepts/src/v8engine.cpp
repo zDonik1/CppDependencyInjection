@@ -11,10 +11,16 @@ using namespace std;
 
 bool V8Engine::start()
 {
+    isRunning_ = true;
     return true;
 }
 
-bool V8Engine::isRunning()
+void V8Engine::stop()
 {
-    return false;
+    isRunning_ = false;
+}
+
+bool V8Engine::isRunning() const
+{
+    return isRunning_;
 }
