@@ -14,5 +14,6 @@
 class V8Engine
 {
 public:
-    bool start() { return true; }
+    bool start();
+    bool isRunning();
 };

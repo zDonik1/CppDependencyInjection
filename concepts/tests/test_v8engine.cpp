@@ -5,9 +5,20 @@
 using namespace std;
 using namespace testing;
 
-TEST(TestV8Engine, StartSucceeds)
-{
-    V8Engine engine;
 
+class TestV8Engine : public Test
+{
+public:
+    V8Engine engine;
+};
+
+
+TEST_F(TestV8Engine, StartSucceeds)
+{
     ASSERT_THAT(engine.start(), IsTrue());
+}
+
+TEST_F(TestV8Engine, IsRunningIsFalseByDefault)
+{
+    ASSERT_THAT(engine.isRunning(), IsFalse());
 }
