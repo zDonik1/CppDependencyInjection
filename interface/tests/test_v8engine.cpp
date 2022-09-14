@@ -4,3 +4,10 @@
 
 using namespace std;
 using namespace testing;
+
+TEST(TestV8Engine, StartShouldSucceed)
+{
+    V8Engine engine;
+
+    ASSERT_THAT(engine.start(), IsTrue());
+}
