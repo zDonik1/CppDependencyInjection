@@ -12,3 +12,7 @@ bool V8Engine::start()
     return true;
 }
 
+bool V8Engine::isRunning() const
+{
+    return false;
+}
