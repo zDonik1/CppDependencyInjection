@@ -31,17 +31,3 @@ protected:
     shared_ptr<MockEngine> engine;
     Car<MockEngine> car;
 };
-
-TEST_F(TestCar, TestStart)
-{
-    EXPECT_CALL(*engine, start())
-        .WillOnce([] { return true; });
-
-    EXPECT_THAT(car.start(), IsTrue());
-}
-
-TEST_F(TestCar, TestStop)
-{
-    EXPECT_CALL(*engine, stop());
-    car.stop();
-}
