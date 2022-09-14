@@ -31,3 +31,10 @@ protected:
     shared_ptr<MockEngine> engine;
     Car<MockEngine> car;
 };
+
+TEST_F(TestCar, StartCallsStartOnEngine)
+{
+    EXPECT_CALL(*engine, start());
+
+    car.start();
+}
