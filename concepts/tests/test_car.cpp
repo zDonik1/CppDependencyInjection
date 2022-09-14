@@ -12,6 +12,7 @@
 using namespace std;
 using namespace testing;
 
+
 class MockEngine
 {
 public:
@@ -32,6 +33,7 @@ protected:
     Car<MockEngine> car;
 };
 
+
 TEST_F(TestCar, StartCallsStartOnEngine)
 {
     EXPECT_CALL(*engine, start());
@@ -45,4 +47,11 @@ TEST_F(TestCar, StartReturnsSuccessOfEngine)
     EXPECT_CALL(*engine, start()).WillOnce(Return(SUCCESS));
 
     ASSERT_THAT(car.start(), Eq(SUCCESS));
+}
+
+TEST_F(TestCar, StopCallsStopOnEngine)
+{
+    EXPECT_CALL(*engine, stop());
+
+    car.stop();
 }
