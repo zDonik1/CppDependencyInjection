@@ -12,6 +12,7 @@
 using namespace std;
 using namespace testing;
 
+
 class MockEngine
 {
 public:
@@ -22,26 +23,35 @@ public:
 static_assert(Engine<MockEngine>);
 
 
-class CarTest : public Test
+class TestCar : public Test
 {
 public:
-    CarTest() : engine{make_shared<MockEngine>()}, car{engine} {}
+    TestCar() : engine{make_shared<MockEngine>()}, car{engine} {}
 
 protected:
     shared_ptr<MockEngine> engine;
     Car<MockEngine> car;
 };
 
-TEST_F(CarTest, TestStart)
-{
-    EXPECT_CALL(*engine, start())
-        .WillOnce([] { return true; });
 
-    EXPECT_THAT(car.start(), IsTrue());
+TEST_F(TestCar, StartCallsStartOnEngine)
+{
+    EXPECT_CALL(*engine, start());
+
+    car.start();
 }
 
-TEST_F(CarTest, TestStop)
+TEST_F(TestCar, StartReturnsSuccessOfEngine)
+{
+    constexpr auto SUCCESS = true;
+    EXPECT_CALL(*engine, start()).WillOnce(Return(SUCCESS));
+
+    ASSERT_THAT(car.start(), Eq(SUCCESS));
+}
+
+TEST_F(TestCar, StopCallsStopOnEngine)
 {
     EXPECT_CALL(*engine, stop());
+
     car.stop();
 }

@@ -5,29 +5,38 @@
 using namespace std;
 using namespace testing;
 
-class V8EngineTest : public Test
+
+class TestV8Engine : public Test
 {
-protected:
+public:
     V8Engine engine;
 };
 
-TEST_F(V8EngineTest, TestStart)
+
+TEST_F(TestV8Engine, StartSucceeds)
 {
-    EXPECT_THAT(engine.start(), IsTrue());
-    EXPECT_THAT(engine.isRunning(), IsTrue());
+    ASSERT_THAT(engine.start(), IsTrue());
 }
 
-TEST(ConstV8EngineTest, TestIsRunningWhenNotStarted)
+TEST(TestConstV8Engine, IsRunningIsFalseByDefault)
 {
     const V8Engine engine;
-    EXPECT_THAT(engine.isRunning(), IsFalse());
+
+    ASSERT_THAT(engine.isRunning(), IsFalse());
 }
 
-TEST_F(V8EngineTest, TestStop)
+TEST_F(TestV8Engine, IsRunningReturnsTrueAfterStart)
 {
     engine.start();
+
     ASSERT_THAT(engine.isRunning(), IsTrue());
+}
+
+TEST_F(TestV8Engine, IsRunningReturnsFalseAfterStopped)
+{
+    engine.start();
 
     engine.stop();
-    EXPECT_THAT(engine.isRunning(), IsFalse());
+
+    ASSERT_THAT(engine.isRunning(), IsFalse());
 }
