@@ -38,3 +38,11 @@ TEST_F(TestCar, StartCallsStartOnEngine)
 
     car.start();
 }
+
+TEST_F(TestCar, StartReturnsSuccessOfEngine)
+{
+    constexpr auto SUCCESS = true;
+    EXPECT_CALL(*engine, start()).WillOnce(Return(SUCCESS));
+
+    ASSERT_THAT(car.start(), Eq(SUCCESS));
+}
