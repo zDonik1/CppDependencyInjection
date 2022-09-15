@@ -29,14 +29,14 @@ public:
 };
 
 
-TEST_F(TestCar, StartCallsStartOnEngine)
+TEST_F(TestCar, StartingCarStartsEngine)
 {
     EXPECT_CALL(*engine, start);
 
     car.start();
 }
 
-TEST_F(TestCar, StartReturnsSuccessOfEngineStart)
+TEST_F(TestCar, StartingCarReturnsEngineStartSuccess)
 {
     constexpr auto SUCCESS{true};
     EXPECT_CALL(*engine, start).WillOnce(Return(SUCCESS));
