@@ -12,18 +12,33 @@
 using namespace std;
 using namespace testing;
 
+
 class MockEngine : public IEngine
 {
 public:
     MOCK_METHOD(bool, start, (), (override));
 };
 
-TEST(TestCar, StartCallsStartOnEngine)
+
+class TestCar : public Test
 {
-    auto engine = make_shared<MockEngine>();
+public:
+    shared_ptr<MockEngine> engine{make_shared<MockEngine>()};
+    Car car{engine};
+};
+
+
+TEST_F(TestCar, StartCallsStartOnEngine)
+{
     EXPECT_CALL(*engine, start);
 
-    Car car{engine};
-
     car.start();
+}
+
+TEST_F(TestCar, StartReturnsSuccessOfEngineStart)
+{
+    constexpr auto SUCCESS{true};
+    EXPECT_CALL(*engine, start).WillOnce(Return(SUCCESS));
+
+    ASSERT_THAT(car.start(), Eq(SUCCESS));
 }

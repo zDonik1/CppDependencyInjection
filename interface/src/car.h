@@ -16,7 +16,7 @@ class Car
 public:
     Car(std::shared_ptr<IEngine> engine);
 
-    void start();
+    bool start();
 
 private:
     std::shared_ptr<IEngine> engine_;

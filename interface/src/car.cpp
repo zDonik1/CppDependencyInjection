@@ -9,7 +9,7 @@
 
 Car::Car(std::shared_ptr<IEngine> engine) : engine_{move(engine)} {}
 
-void Car::start()
+bool Car::start()
 {
-    engine_->start();
+    return engine_->start();
 }
