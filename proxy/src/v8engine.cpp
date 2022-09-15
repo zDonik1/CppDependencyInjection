@@ -9,10 +9,11 @@
 
 bool V8Engine::start()
 {
+    isRunning_ = true;
     return true;
 }
 
 bool V8Engine::isRunning() const
 {
-    return false;
+    return isRunning_;
 }
