@@ -11,3 +11,10 @@ TEST(TestV8Engine, StartSucceeds)
 
     ASSERT_THAT(engine.start(), IsTrue());
 }
+
+TEST(TestV8ConstEngine, NotRunningByDefault)
+{
+    const V8Engine engine;
+
+    ASSERT_THAT(engine.isRunning(), IsFalse());
+}
