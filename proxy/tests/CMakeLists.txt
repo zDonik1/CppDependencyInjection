@@ -30,5 +30,5 @@ set(SOURCES
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${CLASS_SOURCES})
-target_link_libraries(${PROJECT_NAME} GTest::gtest_main GTest::gmock)
+target_link_libraries(${PROJECT_NAME} GTest::gtest_main GTest::gmock msft_proxy)
 target_include_directories(${PROJECT_NAME} PUBLIC ../src)
