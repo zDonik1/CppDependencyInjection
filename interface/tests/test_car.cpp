@@ -18,6 +18,7 @@ class MockEngine : public IEngine
 public:
     MOCK_METHOD(bool, start, (), (override));
     MOCK_METHOD(void, stop, (), (override));
+    MOCK_METHOD(bool, isRunning, (), (const, override));
 };
 
 

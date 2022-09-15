@@ -7,12 +7,14 @@
 
 #pragma once
 
-class V8Engine
+#include "iengine.h"
+
+class V8Engine : public IEngine
 {
 public:
-    bool start();
-    void stop();
-    bool isRunning() const;
+    bool start() override;
+    void stop() override;
+    bool isRunning() const override;
 
 private:
     bool isRunning_{false};

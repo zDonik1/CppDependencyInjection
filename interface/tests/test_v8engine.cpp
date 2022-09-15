@@ -41,3 +41,10 @@ TEST_F(TestV8Engine, IsRunningReturnsFalseAfterStopping)
 
     ASSERT_THAT(engine.isRunning(), IsFalse());
 }
+
+TEST(TestV8EngineType, CanBeUsedThroughInterface)
+{
+    unique_ptr<IEngine> engine{make_unique<V8Engine>()};
+
+    ASSERT_THAT(engine->start(), IsTrue());
+}
