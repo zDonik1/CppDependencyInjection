@@ -17,6 +17,7 @@ class MockEngine : public IEngine
 {
 public:
     MOCK_METHOD(bool, start, (), (override));
+    MOCK_METHOD(void, stop, (), (override));
 };
 
 
@@ -41,4 +42,11 @@ TEST_F(TestCar, StartReturnsSuccessOfEngineStart)
     EXPECT_CALL(*engine, start).WillOnce(Return(SUCCESS));
 
     ASSERT_THAT(car.start(), Eq(SUCCESS));
+}
+
+TEST_F(TestCar, StoppingCarStopsEngine)
+{
+    EXPECT_CALL(*engine, stop);
+
+    car.stop();
 }

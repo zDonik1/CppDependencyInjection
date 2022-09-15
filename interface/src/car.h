@@ -17,6 +17,7 @@ public:
     Car(std::shared_ptr<IEngine> engine);
 
     bool start();
+    void stop();
 
 private:
     std::shared_ptr<IEngine> engine_;

@@ -13,3 +13,8 @@ bool Car::start()
 {
     return engine_->start();
 }
+
+void Car::stop()
+{
+    engine_->stop();
+}
