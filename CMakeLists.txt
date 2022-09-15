@@ -12,4 +12,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(interface)
 add_subdirectory(concepts)
+add_subdirectory(proxy)
 add_subdirectory(crtp)
