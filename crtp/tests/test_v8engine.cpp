@@ -24,28 +24,26 @@ TEST_F(TestV8Engine, StartSucceeds)
     ASSERT_THAT(engine.start(), IsTrue());
 }
 
-TEST_F(TestV8Engine, StartSetsIsRunningToTrue)
+TEST(TestConstV8Engine, NotRunningByDefault)
 {
-    ASSERT_THAT(engine.isRunning(), IsFalse());
+    const V8Engine engine;
 
+    ASSERT_THAT(engine.isRunning(), IsFalse());
+}
+
+TEST_F(TestV8Engine, IsRunningAfterStarting)
+{
     engine.start();
 
     ASSERT_THAT(engine.isRunning(), IsTrue());
 }
 
-TEST_F(TestV8Engine, StopSetsIsRunningToFalse)
+TEST_F(TestV8Engine, NotRunningAfterStopping)
 {
     engine.start();
     ASSERT_THAT(engine.isRunning(), IsTrue());
 
     engine.stop();
-
-    ASSERT_THAT(engine.isRunning(), IsFalse());
-}
-
-TEST(TestConstV8Engine, IsRunningCanBeCalledByConstObject)
-{
-    const V8Engine engine;
 
     ASSERT_THAT(engine.isRunning(), IsFalse());
 }
