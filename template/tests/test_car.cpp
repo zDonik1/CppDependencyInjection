@@ -51,3 +51,8 @@ TEST_F(TestCar, StoppingCarStopsEngine)
 
     car.stop();
 }
+
+TEST(TestCarConstructor, ThrowsInvalidArgumentOnNullptrEngine)
+{
+    ASSERT_THROW(Car<MockEngine>{nullptr}, invalid_argument);
+}
