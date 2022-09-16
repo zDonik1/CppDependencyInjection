@@ -11,3 +11,8 @@ bool V8Engine::start()
 {
     return true;
 }
+
+bool V8Engine::isRunning()
+{
+    return false;
+}
