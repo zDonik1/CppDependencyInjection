@@ -11,7 +11,7 @@ class V8Engine
 {
 public:
     bool start();
-
+    void stop();
     bool isRunning();
 
 private:
