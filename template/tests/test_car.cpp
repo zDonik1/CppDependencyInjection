@@ -17,6 +17,7 @@ class MockEngine
 {
 public:
     MOCK_METHOD(bool, start, ());
+    MOCK_METHOD(void, stop, ());
 };
 
 
@@ -42,4 +43,11 @@ TEST_F(TestCar, StartingCarReturnsEngineStartSuccess)
     EXPECT_CALL(*engine, start).WillOnce(Return(SUCCESS));
 
     ASSERT_THAT(car.start(), Eq(SUCCESS));
+}
+
+TEST_F(TestCar, StoppingCarStopsEngine)
+{
+    EXPECT_CALL(*engine, stop);
+
+    car.stop();
 }
