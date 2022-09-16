@@ -7,7 +7,13 @@
 
 #include "car.h"
 
-Car::Car(std::shared_ptr<IEngine> engine) : engine_{move(engine)} {}
+using namespace std;
+
+Car::Car(shared_ptr<IEngine> engine) : engine_{move(engine)}
+{
+    if (!engine_)
+        throw invalid_argument("engine argument is nullptr");
+}
 
 bool Car::start()
 {

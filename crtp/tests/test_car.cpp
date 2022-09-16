@@ -24,7 +24,14 @@ public:
 };
 
 
-TEST_F(TestCar, CanStartTheEngine)
+TEST_F(TestCar, StartingCarStartsEngine)
+{
+    EXPECT_CALL(*engine, start);
+
+    car.start();
+}
+
+TEST_F(TestCar, StartingCarReturnsEngineStartSuccess)
 {
     constexpr auto SUCCESS{true};
     EXPECT_CALL(*engine, start).WillOnce(Return(SUCCESS));
@@ -32,7 +39,7 @@ TEST_F(TestCar, CanStartTheEngine)
     ASSERT_THAT(car.start(), Eq(SUCCESS));
 }
 
-TEST_F(TestCar, CanStopTheEngine)
+TEST_F(TestCar, StoppingCarStopsEngine)
 {
     EXPECT_CALL(*engine, stop);
 

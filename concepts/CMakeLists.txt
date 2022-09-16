@@ -18,7 +18,6 @@ set(HEADERS
 
 set(CLASS_SOURCES
     v8engine.cpp
-    car.cpp
 )
 
 list(TRANSFORM HEADERS PREPEND ${CMAKE_CURRENT_LIST_DIR}/src/)

@@ -15,42 +15,35 @@ using namespace testing;
 class TestV8Engine : public Test
 {
 public:
-    V8Engine engine;
+    unique_ptr<Engine<V8Engine>> engine{make_unique<V8Engine>()};
 };
 
 
 TEST_F(TestV8Engine, StartSucceeds)
 {
-    ASSERT_THAT(engine.start(), IsTrue());
+    ASSERT_THAT(engine->start(), IsTrue());
 }
 
-TEST_F(TestV8Engine, StartSetsIsRunningToTrue)
-{
-    ASSERT_THAT(engine.isRunning(), IsFalse());
-
-    engine.start();
-
-    ASSERT_THAT(engine.isRunning(), IsTrue());
-}
-
-TEST_F(TestV8Engine, StopSetsIsRunningToFalse)
-{
-    engine.start();
-    ASSERT_THAT(engine.isRunning(), IsTrue());
-
-    engine.stop();
-
-    ASSERT_THAT(engine.isRunning(), IsFalse());
-}
-
-TEST(TestConstV8Engine, IsRunningCanBeCalledByConstObject)
+TEST(TestConstV8Engine, NotRunningByDefault)
 {
     const V8Engine engine;
 
     ASSERT_THAT(engine.isRunning(), IsFalse());
 }
 
-TEST(TestV8EngineType, InheritsFromSpecializedEngine)
+TEST_F(TestV8Engine, IsRunningAfterStarting)
 {
-    ASSERT_THAT((is_base_of_v<Engine<V8Engine>, V8Engine>), IsTrue());
+    engine->start();
+
+    ASSERT_THAT(engine->isRunning(), IsTrue());
+}
+
+TEST_F(TestV8Engine, NotRunningAfterStopping)
+{
+    engine->start();
+    ASSERT_THAT(engine->isRunning(), IsTrue());
+
+    engine->stop();
+
+    ASSERT_THAT(engine->isRunning(), IsFalse());
 }
