@@ -41,7 +41,7 @@ TEST_F(TestCar, StartCallsStartOnEngine)
     car.start();
 }
 
-TEST_F(TestCar, StartReturnsSuccessOfEngine)
+TEST_F(TestCar, StartingCarReturnsEngineStartSuccess)
 {
     constexpr auto SUCCESS = true;
     EXPECT_CALL(*engine, start()).WillOnce(Return(SUCCESS));
@@ -49,9 +49,14 @@ TEST_F(TestCar, StartReturnsSuccessOfEngine)
     ASSERT_THAT(car.start(), Eq(SUCCESS));
 }
 
-TEST_F(TestCar, StopCallsStopOnEngine)
+TEST_F(TestCar, StoppingCarStopsEngine)
 {
     EXPECT_CALL(*engine, stop());
 
     car.stop();
+}
+
+TEST(TestCarConstructor, ThrowsInvalidArgumentOnNullptrEngine)
+{
+    ASSERT_THROW(Car<MockEngine>{nullptr}, invalid_argument);
 }
