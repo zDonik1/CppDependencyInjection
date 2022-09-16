@@ -44,3 +44,10 @@ TEST_F(TestCar, StartingCarReturnsEngineStartSuccess)
 
     ASSERT_THAT(car.start(), Eq(SUCCESS));
 }
+
+TEST_F(TestCar, StoppingCarStopsEngine)
+{
+    EXPECT_CALL(engine, stop());
+
+    car.stop();
+}

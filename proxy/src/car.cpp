@@ -16,3 +16,8 @@ bool Car::start()
 {
     return engine_.invoke<Start>();
 }
+
+void Car::stop()
+{
+    engine_.invoke<Stop>();
+}
