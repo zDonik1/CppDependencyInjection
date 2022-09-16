@@ -15,7 +15,7 @@ class Car
 public:
     Car(std::shared_ptr<Engine> engine) : engine_{std::move(engine)} {}
 
-    inline auto start() { engine_->start(); }
+    inline auto start() { return engine_->start(); }
 
 private:
     std::shared_ptr<Engine> engine_;
