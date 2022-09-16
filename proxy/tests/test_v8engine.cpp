@@ -1,42 +1,11 @@
 #include <gmock/gmock.h>
-#include <proxy/proxy.h>
 
 #include <v8engine.h>
+#include <fengine.h>
 
 using namespace std;
 using namespace testing;
 using namespace pro;
-
-
-struct Start : pro::dispatch<bool()>
-{
-    template<class Self>
-    inline auto operator()(Self &self)
-    {
-        return self.start();
-    }
-};
-
-struct IsRunning : pro::dispatch<bool()>
-{
-    template<class Self>
-    inline auto operator()(Self &self)
-    {
-        return self.isRunning();
-    }
-};
-
-struct Stop : pro::dispatch<void()>
-{
-    template<class Self>
-    inline auto operator()(Self &self)
-    {
-        self.stop();
-    }
-};
-
-struct FEngine : pro::facade<Start, IsRunning, Stop>
-{};
 
 
 class TestV8Engine : public Test

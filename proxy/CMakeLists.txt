@@ -17,10 +17,13 @@ find_package(proxy CONFIG REQUIRED)
 
 set(HEADERS
     v8engine.h
+    car.h
+    fengine.h
 )
 
 set(CLASS_SOURCES
     v8engine.cpp
+    car.cpp
 )
 
 list(TRANSFORM HEADERS PREPEND ${CMAKE_CURRENT_LIST_DIR}/src/)
