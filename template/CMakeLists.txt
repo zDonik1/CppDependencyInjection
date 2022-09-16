@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(HEADERS
     v8engine.h
+    car.h
 )
 
 set(CLASS_SOURCES
