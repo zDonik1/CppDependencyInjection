@@ -22,12 +22,25 @@ public:
 };
 
 
-TEST(TestCar, StartingCarStartsEngine)
+class TestCar : public Test
 {
+public:
     MockEngine engine;
+    Car car{&engine};
+};
+
+
+TEST_F(TestCar, StartingCarStartsEngine)
+{
     EXPECT_CALL(engine, start());
 
-    Car car{&engine};
-
     car.start();
+}
+
+TEST_F(TestCar, StartingCarReturnsEngineStartSuccess)
+{
+    constexpr auto SUCCESS{true};
+    EXPECT_CALL(engine, start()).WillOnce(Return(SUCCESS));
+
+    ASSERT_THAT(car.start(), Eq(SUCCESS));
 }

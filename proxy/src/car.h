@@ -14,7 +14,7 @@ class Car
 public:
     Car(pro::proxy<FEngine> engine);
 
-    void start();
+    bool start();
 
 private:
     pro::proxy<FEngine> engine_;

@@ -12,7 +12,7 @@ using namespace pro;
 
 Car::Car(proxy<FEngine> engine) : engine_{move(engine)} {}
 
-void Car::start()
+bool Car::start()
 {
-    engine_.invoke<Start>();
+    return engine_.invoke<Start>();
 }
