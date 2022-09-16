@@ -7,10 +7,16 @@
 
 #include "car.h"
 
+#include <stdexcept>
+
 using namespace std;
 using namespace pro;
 
-Car::Car(proxy<FEngine> engine) : engine_{move(engine)} {}
+Car::Car(proxy<FEngine> engine) : engine_{move(engine)}
+{
+    if (!engine_.has_value())
+        throw invalid_argument("engine argument is nullptr");
+}
 
 bool Car::start()
 {
