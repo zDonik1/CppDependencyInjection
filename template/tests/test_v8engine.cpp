@@ -22,3 +22,10 @@ TEST_F(TestV8Engine, NotRunningByDefault)
 {
     ASSERT_THAT(engine.isRunning(), IsFalse());
 }
+
+TEST_F(TestV8Engine, IsRunningAfterStarting)
+{
+    engine.start();
+
+    ASSERT_THAT(engine.isRunning(), IsTrue());
+}
