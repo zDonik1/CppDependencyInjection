@@ -16,13 +16,14 @@ private:
     using EnginePtr = std::shared_ptr<EngineType>;
 
 public:
-    Car(EnginePtr engine) : engine_{std::move(engine)} {
+    Car(EnginePtr engine) : engine_{std::move(engine)}
+    {
         if (!engine_)
             throw std::invalid_argument("engine argument is nullptr");
     }
 
-    bool start() { return engine_->start(); }
-    void stop() { engine_->stop(); }
+    inline auto start() { return engine_->start(); }
+    inline auto stop() { engine_->stop(); }
 
 private:
     EnginePtr engine_;
