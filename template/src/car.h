@@ -13,7 +13,8 @@ template<typename Engine>
 class Car
 {
 public:
-    Car(std::shared_ptr<Engine> engine) : engine_{std::move(engine)} {
+    Car(std::shared_ptr<Engine> engine) : engine_{std::move(engine)}
+    {
         if (!engine_)
             throw std::invalid_argument("engine argument is nullptr");
     }
