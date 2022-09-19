@@ -1,6 +1,6 @@
 # CppDependencyInjection
 
-This project is created for an article I have written on Medium. It showcases different ways dependency injection can be effectively achieved using C++.
+This project is created for an [article](https://medium.com/@zdonik/effective-dependency-injection-in-cpp-debc030f23ae) I have written on Medium. It showcases different ways dependency injection can be effectively achieved using C++.
 
 The methods that are explored here are:
 
